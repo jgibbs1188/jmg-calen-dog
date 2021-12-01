@@ -1,5 +1,5 @@
 {
-  "name": "react-template-2021",
+  "name": "jmg-calen-dog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,7 @@
     "@popperjs/core": "^2.9.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
-    "firebase": "^8.2.0",
+    "firebase": "^8.10.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -15,6 +15,7 @@
     "react-scripts": "4.0.3",
     "reactstrap": "^8.10.0",
     "sass": "^1.42.1",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -57,6 +58,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.0"
   }
 }
