@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import SignIn from '../views/SignIn';
+import SignIn from '../components/SignIn';
 
 function Initialize() {
   const [user, setUser] = useState(null);
