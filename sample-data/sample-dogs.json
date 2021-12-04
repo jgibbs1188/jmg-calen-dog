@@ -2,13 +2,13 @@
     "11111" : {
         "name": "Rocky",
         "firebaseKey": "11111",
-        "uid": "1111111111",
+        "uid": "yG3UjnaMcZVeECfivALweHYqovJ3",
         "image": "https://images.pexels.com/photos/3478875/pexels-photo-3478875.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     },
     "22222" : {
         "name": "Dot",
         "firebaseKey": "22222",
-        "uid": "2222222222",
+        "uid": "yG3UjnaMcZVeECfivALweHYqovJ3",
         "image": "https://www.readersdigest.ca/wp-content/uploads/2013/03/6-facts-to-know-before-owning-a-puppy.jpg"
     }
 }

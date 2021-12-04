@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import SignIn from '../views/SignIn';
+
+import Login from '../views/Login';
+import Navbar from '../components/Navbar';
 
 function Initialize() {
   const [user, setUser] = useState(null);
@@ -23,7 +25,8 @@ function Initialize() {
 
   return (
     <div className="App">
-      <SignIn />
+      <Navbar />
+      <Login />
     </div>
   );
 }
