@@ -8,9 +8,12 @@ export default function Routes({ user }) {
 }
 
 Routes.propTypes = {
-  user: PropTypes.shape({
-    isAdmin: PropTypes.bool,
-  }),
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      uid: PropTypes.string,
+    }),
+    PropTypes.bool,
+  ]),
 };
 
 Routes.defaultProps = {

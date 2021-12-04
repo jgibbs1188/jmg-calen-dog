@@ -5,7 +5,7 @@ const dbUrl = firebaseConfig.databaseURL;
 
 const getAllDogs = (user) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/dogs.json?orderBy="uid"&equalTo="${user}"`)
+    .get(`${dbUrl}/dogs.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
