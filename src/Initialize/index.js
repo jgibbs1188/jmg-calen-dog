@@ -31,7 +31,8 @@ function Initialize() {
         </>
       ) : (
         <>
-          <Navbar user={user} /> <Routes user={user} />
+          <Navbar user={user} />
+          <Routes user={user} />
         </>
       )}
     </div>

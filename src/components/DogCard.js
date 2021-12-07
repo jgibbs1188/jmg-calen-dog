@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 function DogCard({ dogObj }) {
+  const DogImage = styled.img`
+    max-width: 200px;
+    max-height: 200px;
+  `;
+
   return (
     <div>
       <div className="card">
         <div className="card-body">
-          <h4 className="card-title">{dogObj.name}</h4>
-          <img src={dogObj.image} alt={dogObj.name} />
+          <h4 className="card-title">{dogObj.dogName}</h4>
+          <DogImage src={dogObj.dogImage} alt={dogObj.dogName} />
           <button type="button" className="fa btn-info">
             Edit
           </button>
@@ -31,8 +37,8 @@ DogCard.propTypes = {
   //     PropTypes.bool,
   //   ]),
   dogObj: PropTypes.shape({
-    name: PropTypes.string,
-    image: PropTypes.string,
+    dogName: PropTypes.string,
+    dogImage: PropTypes.string,
   }),
   //   setDogs: PropTypes.func,
 };

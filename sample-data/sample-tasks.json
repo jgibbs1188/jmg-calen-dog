@@ -1,14 +1,14 @@
 {
     "33333" : {
-        "name": "Rocky",
-        "firebaseKey": "33333",
-        "note": "This is a note for Rocky.",
+        "taskName": "Play Fetch",
+        "taskFirebaseKey": "33333",
+        "taskNote": "This is a note for Rocky.",
         "dog_id": "11111"
     },
     "44444" : {
-        "name": "Dot",
-        "firebaseKey": "44444",
-        "note": "This is a note for Dot.",
+        "taskName": "Go for a walk",
+        "taskFirebaseKey": "44444",
+        "taskNote": "This is a note for Dot.",
         "dog_id": "22222"
     }
 }
