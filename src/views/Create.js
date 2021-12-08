@@ -1,10 +1,10 @@
 import React from 'react';
-import NewDogForm from '../components/NewDogForm';
+import DogForm from '../components/DogForm';
 
 export default function Create() {
   return (
     <div>
-      <NewDogForm />
+      <DogForm />
     </div>
   );
 }

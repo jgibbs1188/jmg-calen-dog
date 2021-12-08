@@ -10,9 +10,9 @@ const getAllDogs = (user) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleDog = (obj) => new Promise((resolve, reject) => {
+const getSingleDog = (dogFirebaseKey) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/dogs/${obj.dogFirebaseKey}.json`)
+    .get(`${dbUrl}/dogs/${dogFirebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
@@ -31,9 +31,9 @@ const createDog = (obj, user) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateDog = (formObj, user) => new Promise((resolve, reject) => {
+const updateDog = (dogObj, user) => new Promise((resolve, reject) => {
   axios
-    .patch(`${dbUrl}/dogs/${formObj.dogFirebaseKey}.json`, formObj)
+    .patch(`${dbUrl}/dogs/${dogObj.dogFirebaseKey}.json`, dogObj)
     .then(() => getAllDogs(user).then(resolve))
     .catch(reject);
 });
