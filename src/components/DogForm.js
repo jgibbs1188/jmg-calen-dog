@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import userId from '../api/userId';
-import { createDog } from '../helpers/dogsData';
+import { createDog, updateDog } from '../helpers/dogsData';
 
 const initialDogState = {
   dogName: '',
@@ -11,7 +11,7 @@ const initialDogState = {
   uid: '',
 };
 
-function NewDogForm({ dogObj, user }) {
+function DogForm({ dogObj, user }) {
   const userInfo = userId();
   const [formInput, setFormInput] = useState({
     ...initialDogState,
@@ -45,10 +45,17 @@ function NewDogForm({ dogObj, user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createDog(formInput, user).then(() => {
-      resetForm();
-      history.push('/dogs');
-    });
+    if (dogObj.dogFirebaseKey) {
+      updateDog(formInput, user).then(() => {
+        resetForm();
+        history.push('/dogs');
+      });
+    } else {
+      createDog(formInput, user).then(() => {
+        resetForm();
+        history.push('/dogs');
+      });
+    }
   };
 
   return (
@@ -79,7 +86,7 @@ function NewDogForm({ dogObj, user }) {
   );
 }
 
-NewDogForm.propTypes = {
+DogForm.propTypes = {
   dogObj: PropTypes.shape({
     dogName: PropTypes.string,
     dogImage: PropTypes.string,
@@ -90,9 +97,9 @@ NewDogForm.propTypes = {
   }),
 };
 
-NewDogForm.defaultProps = {
+DogForm.defaultProps = {
   dogObj: {},
   user: {},
 };
 
-export default NewDogForm;
+export default DogForm;

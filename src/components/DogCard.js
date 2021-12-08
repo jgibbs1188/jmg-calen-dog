@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DeleteButton from './buttons/DeleteButton';
+import EditButton from './buttons/EditButton';
 
 function DogCard({ user, dogObj, setDogs }) {
   const DogImage = styled.img`
@@ -15,9 +16,7 @@ function DogCard({ user, dogObj, setDogs }) {
         <div className="card-body">
           <h4 className="card-title">{dogObj.dogName}</h4>
           <DogImage src={dogObj.dogImage} alt={dogObj.dogName} />
-          <button type="button" className="fa btn-info">
-            Edit
-          </button>
+          <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
           <DeleteButton
             user={user}
             dogFirebaseKey={dogObj.dogFirebaseKey}

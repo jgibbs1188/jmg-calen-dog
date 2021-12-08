@@ -5,7 +5,8 @@ import Dashboard from '../views/Dashboard';
 import Dogs from '../views/Dogs';
 import Profile from '../views/Profile';
 import Home from '../views/Home';
-import NewDogForm from '../components/NewDogForm';
+import EditDog from '../views/EditDog';
+import Create from '../views/Create';
 
 export default function PrivateRoutes({ user }) {
   return (
@@ -18,11 +19,16 @@ export default function PrivateRoutes({ user }) {
           component={() => <Dashboard user={user} />}
         />
         <Route exact path="/dogs" component={() => <Dogs user={user} />} />
-        <Route exact path="/new" component={() => <NewDogForm user={user} />} />
+        <Route exact path="/new" component={() => <Create user={user} />} />
         <Route
           exact
           path="/profile"
           component={() => <Profile user={user} />}
+        />
+        <Route
+          exact
+          path="/edit/:dogFirebaseKey"
+          component={() => <EditDog user={user} />}
         />
       </Switch>
     </>
