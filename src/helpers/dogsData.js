@@ -4,7 +4,6 @@ import firebaseConfig from '../api/apiKeys';
 const dbUrl = firebaseConfig.databaseURL;
 
 const getAllDogs = (user) => new Promise((resolve, reject) => {
-  console.warn(user);
   axios
     .get(`${dbUrl}/dogs.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => resolve(Object.values(response.data)))
@@ -41,7 +40,7 @@ const updateDog = (formObj, user) => new Promise((resolve, reject) => {
 
 const deleteDog = (dogFirebaseKey, user) => new Promise((resolve, reject) => {
   axios
-    .delete(`${dbUrl}/dogs/${dogFirebaseKey}`)
+    .delete(`${dbUrl}/dogs/${dogFirebaseKey}.json`)
     .then(() => getAllDogs(user).then(resolve))
     .catch(reject);
 });
