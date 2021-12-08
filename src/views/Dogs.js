@@ -26,7 +26,12 @@ export default function Dogs({ user }) {
         Add A New Doggo?
       </Link>
       {dogs.map((dogObj) => (
-        <DogCard key={dogObj.dogFirebaseKey} user={user} dogObj={dogObj} />
+        <DogCard
+          key={dogObj.dogFirebaseKey}
+          user={user}
+          dogObj={dogObj}
+          setDogs={setDogs}
+        />
       ))}
     </div>
   );

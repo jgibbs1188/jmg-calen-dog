@@ -21,7 +21,6 @@ function NewDogForm({ dogObj, user }) {
   const history = useHistory();
 
   useEffect(() => {
-    console.warn(user);
     if (dogObj.dogFirebaseKey) {
       setFormInput({
         dogName: dogObj.dogName,
@@ -45,7 +44,6 @@ function NewDogForm({ dogObj, user }) {
   };
 
   const handleSubmit = (e) => {
-    console.warn(user);
     e.preventDefault();
     createDog(formInput, user).then(() => {
       resetForm();

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import DeleteButton from './buttons/DeleteButton';
 
-function DogCard({ dogObj }) {
+function DogCard({ user, dogObj, setDogs }) {
   const DogImage = styled.img`
     max-width: 200px;
     max-height: 200px;
@@ -17,9 +18,11 @@ function DogCard({ dogObj }) {
           <button type="button" className="fa btn-info">
             Edit
           </button>
-          <button type="button" className="fa btn-danger">
-            Delete
-          </button>
+          <DeleteButton
+            user={user}
+            dogFirebaseKey={dogObj.dogFirebaseKey}
+            setDogs={setDogs}
+          />
           <button type="button" className="fa btn-success">
             Details
           </button>
@@ -30,23 +33,24 @@ function DogCard({ dogObj }) {
 }
 
 DogCard.propTypes = {
-  //   user: PropTypes.oneOfType([
-  //     PropTypes.shape({
-  //       uid: PropTypes.string,
-  //     }),
-  //     PropTypes.bool,
-  //   ]),
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      uid: PropTypes.string,
+    }),
+    PropTypes.bool,
+  ]),
   dogObj: PropTypes.shape({
     dogName: PropTypes.string,
     dogImage: PropTypes.string,
+    dogFirebaseKey: PropTypes.string,
   }),
-  //   setDogs: PropTypes.func,
+  setDogs: PropTypes.func,
 };
 
 DogCard.defaultProps = {
-  //   user: {},
+  user: {},
   dogObj: {},
-  //   setDogs: () => {},
+  setDogs: () => {},
 };
 
 export default DogCard;
