@@ -7,6 +7,7 @@ import Profile from '../views/Profile';
 import Home from '../views/Home';
 import EditDog from '../views/EditDog';
 import Create from '../views/Create';
+import SingleDog from '../views/SingleDog';
 
 export default function PrivateRoutes({ user }) {
   return (
@@ -19,6 +20,11 @@ export default function PrivateRoutes({ user }) {
           component={() => <Dashboard user={user} />}
         />
         <Route exact path="/dogs" component={() => <Dogs user={user} />} />
+        <Route
+          exact
+          path="/dogs/:dogFirebaseKey"
+          component={() => <SingleDog user={user} />}
+        />
         <Route exact path="/new" component={() => <Create user={user} />} />
         <Route
           exact
