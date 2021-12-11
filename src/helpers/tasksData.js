@@ -17,6 +17,7 @@ const getSingleTask = (taskFirebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// obj is form object
 const createTask = (obj, dogObj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/tasks.json`, obj)
