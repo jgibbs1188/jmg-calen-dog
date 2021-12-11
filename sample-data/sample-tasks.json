@@ -3,12 +3,12 @@
         "taskName": "Play Fetch",
         "taskFirebaseKey": "33333",
         "taskNote": "This is a note for Rocky.",
-        "dog_id": "11111"
+        "dogId": "11111"
     },
     "44444" : {
         "taskName": "Go for a walk",
         "taskFirebaseKey": "44444",
         "taskNote": "This is a note for Dot.",
-        "dog_id": "22222"
+        "dogId": "22222"
     }
 }
