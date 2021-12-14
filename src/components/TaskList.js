@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import DeleteButton from './buttons/DeleteButton';
-import EditButton from './buttons/EditButton';
-import DetailsButton from './buttons/DetailsButton';
+import DeleteButton from './dog buttons/DeleteButton';
+import EditButton from './dog buttons/EditButton';
+import DetailsButton from './dog buttons/DetailsButton';
 
 function DogCard({ user, dogObj, setDogs }) {
   const DogImage = styled.img`

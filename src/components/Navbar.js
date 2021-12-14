@@ -10,7 +10,7 @@ export default function Navbar({ user }) {
         <div className="container-fluid">
           {user ? (
             <h2 className="navbar-brand">
-              <Link className="nav-link active" aria-current="page" to="/home">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Calen-Dog
               </Link>
             </h2>

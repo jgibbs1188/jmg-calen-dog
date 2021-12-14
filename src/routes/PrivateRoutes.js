@@ -13,7 +13,7 @@ export default function PrivateRoutes({ user }) {
   return (
     <>
       <Switch>
-        <Route exact path="/home" component={() => <Home user={user} />} />
+        <Route exact path="/" component={() => <Home user={user} />} />
         <Route
           exact
           path="/dashboard"

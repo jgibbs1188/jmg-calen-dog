@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DeleteButton from './buttons/DeleteButton';
-import EditButton from './buttons/EditButton';
+import DeleteButton from './dog buttons/DeleteButton';
+import EditButton from './dog buttons/EditButton';
 
 export default function DogDetails({ dogObj }) {
   return (
