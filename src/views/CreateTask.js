@@ -1,10 +1,10 @@
 import React from 'react';
-import DogForm from '../components/DogForm';
+import TaskForm from '../components/TaskForm';
 
 export default function Create() {
   return (
     <div>
-      <DogForm />
+      <TaskForm />
     </div>
   );
 }

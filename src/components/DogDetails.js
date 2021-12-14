@@ -6,11 +6,13 @@ import EditButton from './dog buttons/EditButton';
 export default function DogDetails({ dogObj }) {
   return (
     <>
-      <img src={dogObj.dogImage} alt={dogObj.dogName} />
-      <h4>{dogObj.dogName}</h4>
-      <div>
-        <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
-        <DeleteButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+      <div className="dogCard">
+        <img src={dogObj.dogImage} alt={dogObj.dogName} />
+        <h4>{dogObj.dogName}</h4>
+        <div>
+          <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+          <DeleteButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+        </div>
       </div>
     </>
   );
