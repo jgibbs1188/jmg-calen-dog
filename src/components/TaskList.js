@@ -1,54 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import DeleteButton from './dog buttons/DeleteButton';
-import EditButton from './dog buttons/EditButton';
-import DetailsButton from './dog buttons/DetailsButton';
+import TaskDeleteButton from './task buttons/TaskDeleteButton';
+import TaskEditButton from './task buttons/TaskEditButton';
 
-function DogCard({ user, dogObj, setDogs }) {
-  const DogImage = styled.img`
-    max-width: 200px;
-    max-height: 200px;
-  `;
-
+function TaskList({ user, taskObj, setTaskObj }) {
   return (
     <div>
       <div className="card">
         <div className="card-body">
-          <h4 className="card-title">{dogObj.dogName}</h4>
-          <DogImage src={dogObj.dogImage} alt={dogObj.dogName} />
-          <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
-          <DeleteButton
+          <h4 className="card-title">{taskObj.taskName}</h4>
+          <div className="card-text">{taskObj.taskNote}</div>
+          <TaskEditButton taskFirebaseKey={taskObj.taskFirebaseKey} />
+          <TaskDeleteButton
             user={user}
-            dogFirebaseKey={dogObj.dogFirebaseKey}
-            setDogs={setDogs}
+            taskFirebaseKey={taskObj.taskFirebaseKey}
+            setTaskObj={setTaskObj}
           />
-          <DetailsButton dogFirebaseKey={dogObj.dogFirebaseKey} />
         </div>
       </div>
     </div>
   );
 }
 
-DogCard.propTypes = {
+TaskList.propTypes = {
   user: PropTypes.oneOfType([
     PropTypes.shape({
       uid: PropTypes.string,
     }),
     PropTypes.bool,
   ]),
-  dogObj: PropTypes.shape({
-    dogName: PropTypes.string,
-    dogImage: PropTypes.string,
-    dogFirebaseKey: PropTypes.string,
+  taskObj: PropTypes.shape({
+    taskName: PropTypes.string,
+    taskNote: PropTypes.string,
+    taskFirebaseKey: PropTypes.string,
   }),
-  setDogs: PropTypes.func,
+  setTaskObj: PropTypes.func,
 };
 
-DogCard.defaultProps = {
+TaskList.defaultProps = {
   user: {},
-  dogObj: {},
-  setDogs: () => {},
+  taskObj: {},
+  setTaskObj: () => {},
 };
 
-export default DogCard;
+export default TaskList;

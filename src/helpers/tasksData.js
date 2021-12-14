@@ -5,7 +5,9 @@ const dbUrl = firebaseConfig.databaseURL;
 
 const getAllTasksByDog = (dogObj) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/tasks.json?orderBy="dogId"&equalTo="${dogObj.dogId}"`)
+    .get(
+      `${dbUrl}/tasks.json?orderBy="dogId"&equalTo="${dogObj.dogFirebaseKey}"`,
+    )
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
