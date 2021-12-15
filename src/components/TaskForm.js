@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { createTask, updateTask } from '../helpers/tasksData';
 
 const initialTaskState = {
@@ -11,11 +11,13 @@ const initialTaskState = {
 };
 
 function TaskForm({ taskObj, dogObj }) {
+  const { dogFirebaseKey } = useParams();
   const [formInput, setFormInput] = useState({
     ...initialTaskState,
+    dogId: dogFirebaseKey,
   });
 
-  //   const history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     if (taskObj.taskFirebaseKey) {
@@ -23,7 +25,7 @@ function TaskForm({ taskObj, dogObj }) {
         taskName: taskObj.taskName,
         taskNote: taskObj.taskNote,
         taskFirebaseKey: taskObj.taskFirebaseKey,
-        dogId: dogObj.dogFirebaseKey,
+        dogId: dogFirebaseKey,
       });
     }
   }, [taskObj]);
@@ -45,19 +47,19 @@ function TaskForm({ taskObj, dogObj }) {
     if (taskObj.taskFirebaseKey) {
       updateTask(formInput, taskObj).then(() => {
         resetForm();
-        // history.push('/dogs');
+        history.push(`/dogs/${dogFirebaseKey}`);
       });
     } else {
       createTask(formInput, dogObj).then(() => {
         resetForm();
-        // history.push('/dogs');
+        history.push(`/dogs/${dogFirebaseKey}`);
       });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>{taskObj.taskFirebaseKey ? 'EDIT' : 'SAVE'} TASKS</h1>
+      <h1>CREATE TASKS</h1>
       <input
         className="form-control input"
         type="text"

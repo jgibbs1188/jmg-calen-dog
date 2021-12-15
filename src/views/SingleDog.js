@@ -5,6 +5,7 @@ import { getSingleDog } from '../helpers/dogsData';
 import DogDetails from '../components/DogDetails';
 import TaskList from '../components/TaskList';
 import { getAllTasksByDog } from '../helpers/tasksData';
+// import TaskForm from '../components/TaskForm';
 
 export default function SingleDog() {
   const { dogFirebaseKey } = useParams();
@@ -16,7 +17,6 @@ export default function SingleDog() {
       getAllTasksByDog(dog).then((tasksArray) => {
         setTasks(tasksArray);
         setSingleDog(dog);
-        console.warn(tasksArray);
       });
     });
   }, []);
@@ -26,13 +26,14 @@ export default function SingleDog() {
       <div>
         <DogDetails dogObj={singleDog} />
       </div>
-      <Link to="/dogs/:dogFirebaseKey/new_task">Create a new Task!</Link>
+      <Link to={`/new_task/${dogFirebaseKey}`}>Create a new Task!</Link>
       {tasks.map((taskObj) => (
         <TaskList
           taskObj={taskObj}
           key={taskObj.taskFirebaseKey}
           setTasks={setTasks}
-          dogObj={dogFirebaseKey}
+          dogFirebaseKey={dogFirebaseKey}
+          dogObj={singleDog}
         />
       ))}
     </>
@@ -55,6 +56,7 @@ SingleDog.propTypes = {
     taskName: PropTypes.string,
     taskNote: PropTypes.string,
     taskFirebaseKey: PropTypes.string,
+    dogId: PropTypes.string,
   }),
   // setDogs: PropTypes.func,
 };
