@@ -2,18 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function TaskEditButton({ taskFirebaseKey }) {
+export default function TaskEditButton({ taskObj, dogObj }) {
+  console.warn(dogObj);
   return (
-    <Link to={`/edit/${taskFirebaseKey}`} className="btn-outline-dark btn">
+    <Link
+      to={`/edit_task/${taskObj.taskFirebaseKey}`}
+      className="btn-outline-dark btn"
+    >
       <i className="fas fa-edit" />
     </Link>
   );
 }
 
 TaskEditButton.propTypes = {
-  taskFirebaseKey: PropTypes.string,
+  taskObj: PropTypes.shape({
+    taskName: PropTypes.string,
+    taskNote: PropTypes.string,
+    taskFirebaseKey: PropTypes.string,
+  }),
+  dogObj: PropTypes.shape({
+    dogName: PropTypes.string,
+    dogImage: PropTypes.string,
+    dogFirebaseKey: PropTypes.string,
+  }),
 };
 
 TaskEditButton.defaultProps = {
-  taskFirebaseKey: '',
+  taskObj: {},
+  dogObj: {},
 };

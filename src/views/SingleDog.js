@@ -12,6 +12,8 @@ export default function SingleDog() {
   const [singleDog, setSingleDog] = useState({});
   const [tasks, setTasks] = useState([]);
 
+  console.warn(dogFirebaseKey);
+
   useEffect(() => {
     getSingleDog(dogFirebaseKey).then((dog) => {
       getAllTasksByDog(dog).then((tasksArray) => {
@@ -20,6 +22,8 @@ export default function SingleDog() {
       });
     });
   }, []);
+
+  // currently not able to get the dogObj to pass into the taskForm from the edit task button
 
   return (
     <>

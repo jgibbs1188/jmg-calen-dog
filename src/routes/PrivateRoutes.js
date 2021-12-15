@@ -41,7 +41,7 @@ export default function PrivateRoutes({ user }) {
         />
         <Route
           exact
-          path="/edit/:taskFirebaseKey"
+          path="/edit_task/:taskFirebaseKey"
           component={() => <EditTask user={user} />}
         />
         <Route

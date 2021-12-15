@@ -44,7 +44,7 @@ const updateTask = (taskObj, dogObj) => new Promise((resolve, reject) => {
 const deleteTask = (taskFirebaseKey, dogObj) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/tasks/${taskFirebaseKey}.json`)
-    .then(() => getAllTasksByDog(dogObj).then(resolve))
+    .then(() => getAllTasksByDog(dogObj.dogFirebaseKey).then(resolve))
     .catch(reject);
 });
 

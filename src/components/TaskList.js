@@ -3,18 +3,22 @@ import PropTypes from 'prop-types';
 import TaskDeleteButton from './task buttons/TaskDeleteButton';
 import TaskEditButton from './task buttons/TaskEditButton';
 
-function TaskList({ user, taskObj, setTaskObj }) {
+function TaskList({
+  user, dogObj, taskObj, setTaskObj,
+}) {
+  console.warn(dogObj);
   return (
     <div>
       <div className="card">
         <div className="card-body">
           <h4 className="card-title">{taskObj.taskName}</h4>
           <div className="card-text">{taskObj.taskNote}</div>
-          <TaskEditButton taskFirebaseKey={taskObj.taskFirebaseKey} />
+          <TaskEditButton taskObj={taskObj} dogObj={dogObj} />
           <TaskDeleteButton
             user={user}
             taskFirebaseKey={taskObj.taskFirebaseKey}
             setTaskObj={setTaskObj}
+            dogObj={dogObj}
           />
         </div>
       </div>
@@ -29,6 +33,11 @@ TaskList.propTypes = {
     }),
     PropTypes.bool,
   ]),
+  dogObj: PropTypes.shape({
+    dogName: PropTypes.string,
+    dogImage: PropTypes.string,
+    dogFirebaseKey: PropTypes.string,
+  }),
   taskObj: PropTypes.shape({
     taskName: PropTypes.string,
     taskNote: PropTypes.string,
@@ -39,6 +48,7 @@ TaskList.propTypes = {
 
 TaskList.defaultProps = {
   user: {},
+  dogObj: {},
   taskObj: {},
   setTaskObj: () => {},
 };

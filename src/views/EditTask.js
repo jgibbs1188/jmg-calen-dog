@@ -7,6 +7,7 @@ import TaskForm from '../components/TaskForm';
 export default function EditTask() {
   const [editTask, setEditTask] = useState({});
   const { taskFirebaseKey } = useParams();
+  const { dogFirebaseKey } = useParams();
 
   useEffect(() => {
     let isMounted = true;
@@ -20,7 +21,7 @@ export default function EditTask() {
 
   return (
     <div>
-      <TaskForm taskObj={editTask} />
+      <TaskForm taskObj={editTask} dogFirebaseKey={dogFirebaseKey} />
     </div>
   );
 }

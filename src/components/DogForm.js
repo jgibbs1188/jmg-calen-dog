@@ -48,7 +48,7 @@ function DogForm({ dogObj, user }) {
     if (dogObj.dogFirebaseKey) {
       updateDog(formInput, user).then(() => {
         resetForm();
-        history.push('/dogs');
+        history.push(`/dogs/${dogObj.dogFirebaseKey}`);
       });
     } else {
       createDog(formInput, user).then(() => {

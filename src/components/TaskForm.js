@@ -17,6 +17,8 @@ function TaskForm({ taskObj, dogObj }) {
     dogId: dogFirebaseKey,
   });
 
+  console.warn(dogObj);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -45,9 +47,9 @@ function TaskForm({ taskObj, dogObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (taskObj.taskFirebaseKey) {
-      updateTask(formInput, taskObj).then(() => {
+      updateTask(formInput, dogObj).then(() => {
         resetForm();
-        history.push(`/dogs/${dogFirebaseKey}`);
+        history.push(`/dogs/${dogObj.dogFirebaseKey}`);
       });
     } else {
       createTask(formInput, dogObj).then(() => {
@@ -59,7 +61,7 @@ function TaskForm({ taskObj, dogObj }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>CREATE TASKS</h1>
+      <h1>{taskObj.taskFirebaseKey ? 'EDIT' : 'SAVE'} TASKS</h1>
       <input
         className="form-control input"
         type="text"

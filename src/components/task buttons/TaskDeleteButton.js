@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteTask } from '../../helpers/tasksData';
 
@@ -8,7 +8,8 @@ export default function TaskDeleteButton({
   dogObj,
   setTasks,
 }) {
-  const { dogFirebaseKey } = useParams;
+  const history = useHistory();
+
   return (
     <button
       type="button"
@@ -16,7 +17,8 @@ export default function TaskDeleteButton({
       onClick={() => {
         deleteTask(taskFirebaseKey, dogObj).then((allTasksByDog) => {
           setTasks(allTasksByDog);
-            <Link to={`/dogs/${dogFirebaseKey}`} />;
+          history.push(`/dogs/${dogObj.dogFirebaseKey}`);
+          history.go(0);
         });
       }}
     >
