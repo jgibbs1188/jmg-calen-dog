@@ -8,8 +8,9 @@ import Home from '../views/Home';
 import EditDog from '../views/EditDog';
 import CreateDog from '../views/CreateDog';
 import SingleDog from '../views/SingleDog';
-import CreateTask from '../views/CreateTask';
+// import CreateTask from '../views/CreateTask';
 import EditTask from '../views/EditTask';
+import TaskForm from '../components/TaskForm';
 
 export default function PrivateRoutes({ user }) {
   return (
@@ -45,8 +46,8 @@ export default function PrivateRoutes({ user }) {
         />
         <Route
           exact
-          path="/dogs/:dogFirebaseKey/new_task"
-          component={() => <CreateTask user={user} />}
+          path="/new_task/:dogFirebaseKey"
+          component={() => <TaskForm user={user} />}
         />
       </Switch>
     </>
