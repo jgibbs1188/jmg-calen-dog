@@ -6,7 +6,6 @@ import { deleteTask } from '../../helpers/tasksData';
 export default function TaskDeleteButton({ taskFirebaseKey, setTasks }) {
   const { dogFirebaseKey } = useParams();
   const history = useHistory();
-  console.warn(setTasks);
 
   return (
     <button
@@ -14,9 +13,7 @@ export default function TaskDeleteButton({ taskFirebaseKey, setTasks }) {
       className="btn-outline-dark btn"
       onClick={() => {
         deleteTask(taskFirebaseKey, dogFirebaseKey).then((allTasksByDog) => {
-          console.warn(allTasksByDog);
           setTasks(allTasksByDog);
-          console.warn(allTasksByDog);
           history.push(`/dogs/${dogFirebaseKey}`);
         });
       }}

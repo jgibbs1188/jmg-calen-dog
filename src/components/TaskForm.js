@@ -17,8 +17,6 @@ function TaskForm({ taskObj, dogObj }) {
     ...initialTaskState,
   });
 
-  console.warn('TaskForm', dogFirebaseKey);
-
   const history = useHistory();
 
   useEffect(() => {
