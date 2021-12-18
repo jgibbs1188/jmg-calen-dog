@@ -8,7 +8,6 @@ function TaskList({
   user, dogObj, taskObj, setTasks,
 }) {
   const { dogFirebaseKey } = useParams();
-  console.warn(setTasks);
 
   return (
     <div>

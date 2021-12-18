@@ -6,13 +6,10 @@ import { getSingleDog } from '../helpers/dogsData';
 export default function CreateTask() {
   const { dogFirebaseKey } = useParams();
   const [doggoObj, setDoggoObj] = useState({});
-  console.warn('Create Task', dogFirebaseKey);
 
   useEffect(() => {
     getSingleDog(dogFirebaseKey).then(setDoggoObj);
   }, []);
-
-  console.warn(doggoObj);
 
   return (
     <div>
