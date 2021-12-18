@@ -3,11 +3,9 @@ import firebaseConfig from '../api/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getAllTasksByDog = (dogObj) => new Promise((resolve, reject) => {
+const getAllTasksByDog = (dogFirebaseKey) => new Promise((resolve, reject) => {
   axios
-    .get(
-      `${dbUrl}/tasks.json?orderBy="dogId"&equalTo="${dogObj.dogFirebaseKey}"`,
-    )
+    .get(`${dbUrl}/tasks.json?orderBy="dogId"&equalTo="${dogFirebaseKey}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
@@ -28,7 +26,7 @@ const createTask = (obj, dogObj) => new Promise((resolve, reject) => {
       axios
         .patch(`${dbUrl}/tasks/${response.data.name}.json`, taskFirebaseKey)
         .then(() => {
-          getAllTasksByDog(dogObj).then(resolve);
+          getAllTasksByDog(dogObj.dogFirebaseKey).then(resolve);
         });
     })
     .catch(reject);
@@ -44,7 +42,7 @@ const updateTask = (taskObj, dogObj) => new Promise((resolve, reject) => {
 const deleteTask = (taskFirebaseKey, dogObj) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/tasks/${taskFirebaseKey}.json`)
-    .then(() => getAllTasksByDog(dogObj.dogFirebaseKey).then(resolve))
+    .then(() => getAllTasksByDog(dogObj).then(resolve))
     .catch(reject);
 });
 

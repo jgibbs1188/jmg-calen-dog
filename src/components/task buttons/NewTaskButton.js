@@ -2,20 +2,20 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function TaskEditButton({ taskObj }) {
+export default function NewTaskButton({ taskObj, dogObj }) {
   const { dogFirebaseKey } = useParams();
+  console.warn(dogObj);
+  console.warn(taskObj);
 
   return (
-    <Link
-      to={`/${dogFirebaseKey}/${taskObj.taskFirebaseKey}`}
-      className="btn-outline-dark btn"
-    >
-      <i className="fas fa-edit" />
+    <Link to={`/new_task/${dogFirebaseKey}`} className="btn-outline-dark btn">
+      Create a New Task!
+      <i className="fas fa-creative-commons" />
     </Link>
   );
 }
 
-TaskEditButton.propTypes = {
+NewTaskButton.propTypes = {
   taskObj: PropTypes.shape({
     taskName: PropTypes.string,
     taskNote: PropTypes.string,
@@ -28,7 +28,7 @@ TaskEditButton.propTypes = {
   }),
 };
 
-TaskEditButton.defaultProps = {
+NewTaskButton.defaultProps = {
   taskObj: {},
   dogObj: {},
 };

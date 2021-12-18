@@ -1,24 +1,23 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteTask } from '../../helpers/tasksData';
 
-export default function TaskDeleteButton({
-  taskFirebaseKey,
-  dogObj,
-  setTasks,
-}) {
+export default function TaskDeleteButton({ taskFirebaseKey, setTasks }) {
+  const { dogFirebaseKey } = useParams();
   const history = useHistory();
+  console.warn(setTasks);
 
   return (
     <button
       type="button"
       className="btn-outline-dark btn"
       onClick={() => {
-        deleteTask(taskFirebaseKey, dogObj).then((allTasksByDog) => {
+        deleteTask(taskFirebaseKey, dogFirebaseKey).then((allTasksByDog) => {
+          console.warn(allTasksByDog);
           setTasks(allTasksByDog);
-          history.push(`/dogs/${dogObj.dogFirebaseKey}`);
-          history.go(0);
+          console.warn(allTasksByDog);
+          history.push(`/dogs/${dogFirebaseKey}`);
         });
       }}
     >

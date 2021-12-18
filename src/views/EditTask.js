@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { getSingleTask } from '../helpers/tasksData';
 import TaskForm from '../components/TaskForm';
+import { getSingleDog } from '../helpers/dogsData';
 
 export default function EditTask() {
   const [editTask, setEditTask] = useState({});
+  const [doggoObj, setDoggoObj] = useState({});
   const { taskFirebaseKey } = useParams();
   const { dogFirebaseKey } = useParams();
 
@@ -13,6 +15,9 @@ export default function EditTask() {
     let isMounted = true;
     getSingleTask(taskFirebaseKey).then((task) => {
       if (isMounted) setEditTask(task);
+      getSingleDog(dogFirebaseKey).then((dog) => {
+        setDoggoObj(dog);
+      });
     });
     return () => {
       isMounted = false;
@@ -21,7 +26,11 @@ export default function EditTask() {
 
   return (
     <div>
-      <TaskForm taskObj={editTask} dogFirebaseKey={dogFirebaseKey} />
+      <TaskForm
+        taskObj={editTask}
+        dogObj={doggoObj}
+        dogFirebaseKey={dogFirebaseKey}
+      />
     </div>
   );
 }
@@ -33,6 +42,14 @@ EditTask.propTypes = {
     taskNote: PropTypes.string,
     dogId: PropTypes.string,
   }),
+  dogObj: PropTypes.shape({
+    dogName: PropTypes.string,
+    dogImage: PropTypes.string,
+    dogFirebaseKey: PropTypes.string,
+  }),
 };
 
-EditTask.defaultProps = { taskObj: {} };
+EditTask.defaultProps = {
+  taskObj: {},
+  dogObj: {},
+};
