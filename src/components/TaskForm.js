@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router-dom';
 import { createTask, updateTask } from '../helpers/tasksData';
+import SubmitButton from './SubmitButton';
 
 const initialTaskState = {
   taskName: '',
@@ -14,19 +15,22 @@ function TaskForm({ taskObj, dogObj }) {
   const { dogFirebaseKey } = useParams();
   const [formInput, setFormInput] = useState({
     ...initialTaskState,
-    dogId: dogFirebaseKey,
   });
+
+  console.warn('TaskForm', dogFirebaseKey);
 
   const history = useHistory();
 
   useEffect(() => {
-    if (taskObj.taskFirebaseKey) {
+    if (taskObj?.taskFirebaseKey) {
       setFormInput({
         taskName: taskObj.taskName,
         taskNote: taskObj.taskNote,
         taskFirebaseKey: taskObj.taskFirebaseKey,
         dogId: dogFirebaseKey,
       });
+    } else {
+      setFormInput(initialTaskState);
     }
   }, [taskObj]);
 
@@ -44,22 +48,27 @@ function TaskForm({ taskObj, dogObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (taskObj.taskFirebaseKey) {
-      updateTask(formInput, taskObj).then(() => {
+    if (taskObj?.taskFirebaseKey) {
+      updateTask(formInput, dogObj).then(() => {
         resetForm();
-        history.push(`/dogs/${dogFirebaseKey}`);
+        history.push(`/dogs/${dogObj.dogFirebaseKey}`);
       });
     } else {
-      createTask(formInput, dogObj).then(() => {
-        resetForm();
-        history.push(`/dogs/${dogFirebaseKey}`);
+      createTask(
+        {
+          ...formInput,
+          dogId: dogObj.dogFirebaseKey,
+        },
+        dogObj,
+      ).then(() => {
+        history.push(`/dogs/${dogObj.dogFirebaseKey}`);
       });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>CREATE TASKS</h1>
+      <h1>{taskObj?.taskFirebaseKey ? 'EDIT' : 'SAVE'} TASKS</h1>
       <input
         className="form-control input"
         type="text"
@@ -78,9 +87,7 @@ function TaskForm({ taskObj, dogObj }) {
         onChange={handleChange}
         placeholder="TASK NOTE"
       />
-      <button className="btn-outline-dark" type="submit">
-        {taskObj.taskFirebaseKey ? 'UPDATE' : 'SUBMIT'}
-      </button>
+      <SubmitButton dogFirebaseKey={dogFirebaseKey} taskObj={taskObj} />
     </form>
   );
 }
