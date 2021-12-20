@@ -20,12 +20,8 @@ export default function Navbar({ user }) {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             {user ? (
               <div className="navbar-nav">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/dashboard"
-                >
-                  Dashboard
+                <Link className="nav-link active" aria-current="page" to="/new">
+                  Create a New Doggo
                 </Link>
                 <Link
                   className="nav-link active"
@@ -34,13 +30,13 @@ export default function Navbar({ user }) {
                 >
                   Dogs
                 </Link>
-                <Link
+                {/* <Link
                   className="nav-link active"
                   aria-current="page"
                   to="/profile"
                 >
                   Profile
-                </Link>
+                </Link> */}
                 <SignOutButton />
               </div>
             ) : (
