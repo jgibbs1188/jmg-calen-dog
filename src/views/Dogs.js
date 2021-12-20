@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getAllDogs } from '../helpers/dogsData';
 import DogCard from '../components/DogCard';
 
@@ -22,9 +22,9 @@ export default function Dogs({ user }) {
   return (
     <div>
       <h1>Doggos!</h1>
-      <Link className="active btn-success" to="/new">
+      {/* <Link className="active btn-success" to="/new">
         Add A New Doggo?
-      </Link>
+      </Link> */}
       {dogs.map((dogObj) => (
         <DogCard
           key={dogObj.dogFirebaseKey}
