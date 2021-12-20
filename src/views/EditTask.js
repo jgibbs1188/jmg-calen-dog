@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import { getSingleTask } from '../helpers/tasksData';
 import TaskForm from '../components/TaskForm';
 import { getSingleDog } from '../helpers/dogsData';
+import DogContainer from '../styles/DogContainer';
+
+const Page = DogContainer();
 
 export default function EditTask() {
   const [editTask, setEditTask] = useState({});
@@ -25,13 +28,13 @@ export default function EditTask() {
   }, []);
 
   return (
-    <div>
+    <Page>
       <TaskForm
         taskObj={editTask}
         dogObj={doggoObj}
         dogFirebaseKey={dogFirebaseKey}
       />
-    </div>
+    </Page>
   );
 }
 

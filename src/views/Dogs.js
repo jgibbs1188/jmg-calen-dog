@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import { getAllDogs } from '../helpers/dogsData';
 import DogCard from '../components/DogCard';
+import DogContainer from '../styles/DogContainer';
+
+const Page = DogContainer();
 
 export default function Dogs({ user }) {
   const [dogs, setDogs] = useState([]);
@@ -20,7 +23,7 @@ export default function Dogs({ user }) {
   }, []);
 
   return (
-    <div>
+    <Page>
       <h1>Doggos!</h1>
       {/* <Link className="active btn-success" to="/new">
         Add A New Doggo?
@@ -33,7 +36,7 @@ export default function Dogs({ user }) {
           setDogs={setDogs}
         />
       ))}
-    </div>
+    </Page>
   );
 }
 

@@ -4,6 +4,9 @@ import { getSingleDog } from '../helpers/dogsData';
 import DogDetails from '../components/DogDetails';
 import TaskList from '../components/TaskList';
 import { getAllTasksByDog } from '../helpers/tasksData';
+import DogContainer from '../styles/DogContainer';
+
+const Page = DogContainer();
 
 export default function SingleDog() {
   const { dogFirebaseKey } = useParams();
@@ -20,7 +23,7 @@ export default function SingleDog() {
   }, []);
 
   return (
-    <>
+    <Page>
       <div>
         <DogDetails dogObj={singleDog} />
       </div>
@@ -34,6 +37,6 @@ export default function SingleDog() {
           dogObj={singleDog}
         />
       ))}
-    </>
+    </Page>
   );
 }
