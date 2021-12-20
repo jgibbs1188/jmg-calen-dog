@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function EditButton({ dogFirebaseKey }) {
   return (
-    <Link to={`/edit/${dogFirebaseKey}`} className="btn-outline-dark btn">
+    <Link to={`/edit/${dogFirebaseKey}`} className="btn-outline-warning btn">
       <i className="fas fa-edit" />
     </Link>
   );

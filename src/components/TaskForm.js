@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { createTask, updateTask } from '../helpers/tasksData';
 import SubmitButton from './SubmitButton';
+
+const TaskFormContainer = styled.form`
+  border: 2px solid white;
+  padding: 10px;
+`;
+
+const TaskFormInputStyle = styled.div`
+  margin: 5px;
+`;
 
 const initialTaskState = {
   taskName: '',
@@ -65,28 +75,32 @@ function TaskForm({ taskObj, dogObj }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <TaskFormContainer onSubmit={handleSubmit}>
       <h1>{taskObj?.taskFirebaseKey ? 'EDIT' : 'SAVE'} TASKS</h1>
-      <input
-        className="form-control input"
-        type="text"
-        name="taskName"
-        id="taskName"
-        value={formInput.taskName}
-        onChange={handleChange}
-        placeholder="TASK NAME"
-      />
-      <input
-        className="form-control input"
-        type="text"
-        name="taskNote"
-        id="taskNote"
-        value={formInput.taskNote}
-        onChange={handleChange}
-        placeholder="TASK NOTE"
-      />
-      <SubmitButton dogFirebaseKey={dogFirebaseKey} taskObj={taskObj} />
-    </form>
+      <TaskFormInputStyle>
+        <input
+          className="form-control input"
+          type="text"
+          name="taskName"
+          id="taskName"
+          value={formInput.taskName}
+          onChange={handleChange}
+          placeholder="TASK NAME"
+        />
+        <input
+          className="form-control input"
+          type="text"
+          name="taskNote"
+          id="taskNote"
+          value={formInput.taskNote}
+          onChange={handleChange}
+          placeholder="TASK NOTE"
+        />
+      </TaskFormInputStyle>
+      <div>
+        <SubmitButton dogFirebaseKey={dogFirebaseKey} taskObj={taskObj} />
+      </div>
+    </TaskFormContainer>
   );
 }
 
