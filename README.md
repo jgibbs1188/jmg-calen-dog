@@ -4,6 +4,6 @@
 
 ## Contributors: Joe Gibbs
 
-## ERD: ![ERD](https://dbdiagram.io/d/61a576ec8c901501c0d8553a)
-## Flowchart: ![Flowchart](https://docs.google.com/presentation/d/1ycLN96vRF-qFdxQuYFlaClgSOl8PEn_roPpnvLlERV4/edit#slide=id.p)
+## ERD: (https://dbdiagram.io/d/61a576ec8c901501c0d8553a)
+## Flowchart: (https://docs.google.com/presentation/d/1ycLN96vRF-qFdxQuYFlaClgSOl8PEn_roPpnvLlERV4/edit#slide=id.p)
 ## Netlify Link: https://calen-dog.netlify.app/
