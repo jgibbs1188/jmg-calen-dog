@@ -5,6 +5,8 @@ import DeleteButton from './dog buttons/DeleteButton';
 import EditButton from './dog buttons/EditButton';
 
 const DetailsImageStyle = styled.img`
+  max-width: 600px;
+  max-height: 600px;
   border: 2px solid white;
 `;
 
