@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import DeleteButton from './dog buttons/DeleteButton';
 import EditButton from './dog buttons/EditButton';
+
+const DetailsImageStyle = styled.img`
+  border: 2px solid white;
+`;
 
 export default function DogDetails({ dogObj }) {
   return (
     <>
       <div className="dogCard">
-        <img src={dogObj.dogImage} alt={dogObj.dogName} />
-        <h4>{dogObj.dogName}</h4>
+        <DetailsImageStyle src={dogObj.dogImage} alt={dogObj.dogName} />
+        <h2>{dogObj.dogName}</h2>
         <div>
           <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
           <DeleteButton dogFirebaseKey={dogObj.dogFirebaseKey} />

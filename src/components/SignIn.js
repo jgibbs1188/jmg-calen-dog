@@ -1,13 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Button } from 'reactstrap';
 import { signInUser } from '../api/auth';
+
+const SignInContainer = styled.div`
+  border: 2px solid white;
+  padding: 10px;
+`;
 
 export default function SignIn() {
   return (
-    <div className="text-center mt-5">
-      <h1>Welcome! Sign In!</h1>
-      <button type="button" className="btn btn-success" onClick={signInUser}>
+    <SignInContainer>
+      <h1>Sign In To Start!</h1>
+      <Button
+        type="button"
+        className="btn btn-large btn-warning"
+        onClick={signInUser}
+      >
         Sign In
-      </button>
-    </div>
+      </Button>
+    </SignInContainer>
   );
 }

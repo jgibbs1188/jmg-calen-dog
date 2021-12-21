@@ -8,7 +8,7 @@ export default function TaskEditButton({ taskObj }) {
   return (
     <Link
       to={`/${dogFirebaseKey}/${taskObj.taskFirebaseKey}`}
-      className="btn-outline-dark btn"
+      className="btn-outline-warning btn"
     >
       <i className="fas fa-edit" />
     </Link>

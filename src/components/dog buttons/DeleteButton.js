@@ -8,7 +8,7 @@ export default function DeleteButton({ dogFirebaseKey, user, setDogs }) {
   return (
     <button
       type="button"
-      className="btn-outline-dark btn"
+      className="btn-outline-danger btn"
       onClick={() => {
         deleteDog(dogFirebaseKey, user).then((allDogs) => {
           setDogs(allDogs);

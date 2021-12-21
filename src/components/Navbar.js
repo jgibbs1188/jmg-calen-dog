@@ -1,7 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import SignOutButton from './SignOutButton';
+
+const NavContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  column-gap: 10px;
+`;
+
+const PageNameStyle = styled.h2`
+  margin-top: 8px;
+`;
 
 export default function Navbar({ user }) {
   return (
@@ -9,48 +21,64 @@ export default function Navbar({ user }) {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           {user ? (
-            <h2 className="navbar-brand">
-              <Link className="nav-link active" aria-current="page" to="/">
+            <PageNameStyle className="navbar-brand">
+              <Link
+                className="btn btn-outline-primary"
+                aria-current="page"
+                to="/"
+              >
                 Calen-Dog
               </Link>
-            </h2>
+            </PageNameStyle>
           ) : (
             <h2 className="navbar-brand">Calen-Dog</h2>
           )}
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             {user ? (
-              <div className="navbar-nav">
-                <Link className="nav-link active" aria-current="page" to="/new">
-                  Create a New Doggo
-                </Link>
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/dogs"
-                >
-                  Dogs
-                </Link>
-                {/* <Link
+              <>
+                <NavContainer className="navbar-nav">
+                  <Link
+                    className="btn btn-outline-info"
+                    aria-current="page"
+                    to="/new"
+                  >
+                    Create a New Doggo
+                  </Link>
+                  <Link
+                    className="btn btn-outline-info"
+                    aria-current="page"
+                    to="/dogs"
+                  >
+                    Dogs
+                  </Link>
+                  {/* <Link
                   className="nav-link active"
                   aria-current="page"
                   to="/profile"
                 >
                   Profile
                 </Link> */}
-                <SignOutButton />
-              </div>
+                </NavContainer>
+                <div>
+                  <SignOutButton />
+                </div>
+              </>
             ) : (
               <div className="navbar-nav">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link
+                  className="btn btn-outline-info"
+                  aria-current="page"
+                  to="/"
+                >
                   Login
                 </Link>
-                <Link
-                  className="nav-link active"
+                {/* <Link
+                  className="btn btn-outline-info"
                   aria-current="page"
                   to="/about"
                 >
                   About
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>

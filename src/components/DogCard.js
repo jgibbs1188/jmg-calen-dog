@@ -9,23 +9,48 @@ function DogCard({ user, dogObj, setDogs }) {
   const DogImage = styled.img`
     max-width: 200px;
     max-height: 200px;
+    border: solid 2px black;
+  `;
+
+  const DogCardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border: 2px rounded white;
+  `;
+
+  const DogCardTitle = styled.h3`
+    color: black;
+  `;
+
+  const ButtonContainer = styled.div`
+    display: flex;
+    margin: 5px;
+    column-gap: 5px;
+    justify-content: center;
   `;
 
   return (
     <div>
-      <div className="card">
+      <DogCardContainer className="card">
         <div className="card-body">
-          <h4 className="card-title">{dogObj.dogName}</h4>
+          <DogCardTitle className="card-title">{dogObj.dogName}</DogCardTitle>
           <DogImage src={dogObj.dogImage} alt={dogObj.dogName} />
-          <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
-          <DeleteButton
-            user={user}
-            dogFirebaseKey={dogObj.dogFirebaseKey}
-            setDogs={setDogs}
-          />
-          <DetailsButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+          <ButtonContainer>
+            <EditButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+            <DeleteButton
+              user={user}
+              dogFirebaseKey={dogObj.dogFirebaseKey}
+              setDogs={setDogs}
+            />
+            <DetailsButton dogFirebaseKey={dogObj.dogFirebaseKey} />
+          </ButtonContainer>
         </div>
-      </div>
+      </DogCardContainer>
     </div>
   );
 }

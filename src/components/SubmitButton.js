@@ -6,7 +6,7 @@ export default function SubmitButton({ dogFirebaseKey }) {
   return (
     <button
       type="submit"
-      className="btn-outline-dark btn"
+      className="btn btn-outline-light"
       onClick={() => {
         <Link to={`/dogs/${dogFirebaseKey}`} />;
       }}

@@ -1,5 +1,12 @@
 import React from 'react';
+import DogContainer from '../styles/DogContainer';
+
+const Page = DogContainer();
 
 export default function About() {
-  return <div>Learn about me and my app!</div>;
+  return (
+    <Page>
+      <h1>Learn about me and my app!</h1>
+    </Page>
+  );
 }

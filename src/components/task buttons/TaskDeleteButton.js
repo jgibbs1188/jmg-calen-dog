@@ -10,7 +10,7 @@ export default function TaskDeleteButton({ taskFirebaseKey, setTasks }) {
   return (
     <button
       type="button"
-      className="btn-outline-dark btn"
+      className="btn-outline-danger btn"
       onClick={() => {
         deleteTask(taskFirebaseKey, dogFirebaseKey).then((allTasksByDog) => {
           setTasks(allTasksByDog);

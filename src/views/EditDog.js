@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { getSingleDog } from '../helpers/dogsData';
 import DogForm from '../components/DogForm';
+import DogContainer from '../styles/DogContainer';
+
+const Page = DogContainer();
 
 export default function EditDog() {
   const [editDog, setEditDog] = useState({});
@@ -19,9 +22,9 @@ export default function EditDog() {
   }, []);
 
   return (
-    <div>
+    <Page>
       <DogForm dogObj={editDog} />
-    </div>
+    </Page>
   );
 }
 
